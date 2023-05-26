@@ -11,6 +11,10 @@ import java.util.Objects;
 
 public class Main extends Application{
 
+
+
+    //Antes de correr el programa, asegúrese de que la ruta del archivo en Paths.java sea la correcta
+    //Un archivo de prueba, ha sido dejado en resources/data.txt
     public static void main(String[] args) {
         launch();
     }

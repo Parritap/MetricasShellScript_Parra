@@ -16,7 +16,7 @@ public class Controller {
 
 
     @FXML
-    private BubbleChart<String, Integer> bubbleChart;
+    private BubbleChart<Number, Number> bubbleChart;
 
     @FXML
     private BarChart<String, Integer> barChart;
@@ -92,17 +92,26 @@ public class Controller {
 
     private void loadDataToBubble(String data) {
         bubbleChart.getData().clear();
+
         Pattern pattern = Pattern.compile("\\[(.*?),([0-9]+)]");
         Matcher matcher = pattern.matcher(data);
-        XYChart.Series<String, Integer> bubbleChartData = new XYChart.Series<>();
+        XYChart.Series<String, Integer> lineChartData = new XYChart.Series<>();
 
         while (matcher.find()) {
             String key = matcher.group(1);
             int value = Integer.parseInt(matcher.group(2));
-            bubbleChartData.getData().add(new XYChart.Data<>(key, value));
+
+            XYChart.Series serie = new XYChart.Series();
+            serie.setName(key);
+            int random = (int) (Math.random()*1000);
+            serie.getData().add(new XYChart.Data<>(random, random, value));
+
+            bubbleChart.getData().add(serie);
+
+
         }
 
-        bubbleChart.getData().add(bubbleChartData);
+
     }
 
     @FXML
@@ -179,6 +188,11 @@ public class Controller {
     @FXML
     public void initialize() {
         invisibleAll();
+        loadPie();
+        loadLine();
+        loadBar();
+        loadBubble();
+
         loadPie();
     }
 
