@@ -1,4 +1,4 @@
-package org.example.application;
+package org.project.application;
 
 
 import javafx.application.Application;
