@@ -1,11 +1,9 @@
 package org.project.controllers;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import org.project.data.Paths;
 import org.project.utilities.Utilities;
 
@@ -21,6 +19,9 @@ public class Controller {
     @FXML
     private BarChart<String, Integer> barChart;
 
+
+    @FXML
+    private Button btnUserTimes;
 
     @FXML
     private Button btnGraph1;
@@ -44,6 +45,8 @@ public class Controller {
     void loadBar(ActionEvent event) {
         loadBar();
     }
+
+
 
     /**
      * Cargo los datos al gráfico de barras
@@ -204,7 +207,23 @@ public class Controller {
         lineChart.setVisible(false);
         barChart.setVisible(false);
         bubbleChart.setVisible(false);
+
     }
 
 
+    public void loadUserUsageTimes(ActionEvent actionEvent) {
+        invisibleAll();
+        pieChart.setVisible(true);
+        pieChart.setTitle("Porcentaje de uso de los usuarios en el ultimo mes");
+        String data = Utilities.readTxt(Paths.userTimes);
+        loadDataToPie(data); //agrego los datos al pie con el formato específico
+    }
+
+    public void loadTESTUserUsageTimes (ActionEvent actionEvent){
+        invisibleAll();
+        pieChart.setVisible(true);
+        pieChart.setTitle("Porcentaje de uso de los usuarios en el ultimo mes");
+        String data = Utilities.readTxt(Paths.testUserTimes);
+        loadDataToPie(data); //agrego los datos al pie con el formato específico
+    }
 }
