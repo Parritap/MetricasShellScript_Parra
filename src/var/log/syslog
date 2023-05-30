@@ -1,0 +1,20 @@
+May 29 10:15:23 myserver kernel: [2023-05-29T10:15:23.123456Z] INFO: System boot successful
+May 29 10:16:01 myserver CRON[5678]: (root) INFO: Cron job /usr/bin/backup.sh executed successfully
+May 29 10:16:15 myserver sshd[9876]: WARNING: Failed password for user john from 192.168.1.100 port 12345 ssh2
+May 29 10:17:03 myserver postfix/smtpd[3456]: INFO: Connection established from mail.example.com[192.168.1.200]
+May 29 10:17:03 myserver postfix/smtpd[3456]: WARNING: Lost connection after RCPT from mail.example.com[192.168.1.200]
+May 29 10:17:03 myserver postfix/smtpd[3456]: WARNING: Client disconnected from mail.example.com[192.168.1.200] during email transaction
+May 29 10:18:09 myserver systemd[1]: INFO: Started Session 123 of user alice.
+May 29 10:18:42 myserver apache2[2345]: WARNING: [client 192.168.1.150] File not found: /var/www/html/nonexistent.html
+May 29 10:19:11 myserver named[8765]: WARNING: Error resolving 'www.example.com/A/IN': Network unreachable
+May 29 10:19:15 myserver dhcpd[6543]: INFO: DHCPDISCOVER from 00:11:22:33:44:55 via eth0
+May 29 10:19:15 myserver dhcpd[6543]: INFO: DHCPOFFER on 192.168.1.100 to 00:11:22:33:44:55 (john) via eth0
+May 29 10:19:16 myserver dhcpd[6543]: WARNING: DHCPREQUEST for 192.168.1.100 (192.168.1.1) from 00:11:22:33:44:55 (john) via eth0
+May 29 10:19:16 myserver dhcpd[6543]: INFO: DHCPACK on 192.168.1.100 to 00:11:22:33:44:55 (john) via eth0
+May 29 10:20:05 myserver systemd-logind[4321]: INFO: New session 9876 of user bob.
+May 29 10:20:16 myserver cupsd[3456]: INFO: Job 12345 queued for user alice.
+May 29 10:20:16 myserver cupsd[3456]: INFO: Job 12345 started.
+May 29 10:20:16 myserver cupsd[3456]: INFO: Job 12345 completed successfully.
+May 29 10:21:08 myserver postfix/anvil[5678]: INFO: Connection statistics: max connection rate 1/60s for (smtp:192.168.1.200) at May 29 10:20:45
+May 29 10:21:08 myserver postfix/anvil[5678]: INFO: Connection statistics: max connection count 1 for (smtp:192.168.1.200) at May 29 10:20:45
+May 29 10:21:08 myserver postfix/anvil[5678]: unlocked login keyring

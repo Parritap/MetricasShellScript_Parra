@@ -7,8 +7,18 @@ import javafx.scene.control.Button;
 import org.project.data.Paths;
 import org.project.utilities.Utilities;
 
+import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Controller {
 
@@ -192,9 +202,22 @@ public class Controller {
         loadPie(Paths.DATA1, "Languages most popular");
     }
     
+    
     @FXML
     void loadPieNotif(ActionEvent event) {
-        loadPie(Paths.notificaciones, "Notificiaciones");
+    	
+    	HashMap<String, Integer> contados = new HashMap<>();
+    	contados.put("INFO", 0);
+    	contados.put("WARNING", 0);
+    	getStats("(INFO|WARNING)", 1 ).stream().forEach(
+    			e->Arrays.asList(e).stream()
+    			.forEach(f->contados.compute(f, (k, v)->v+1)));
+    	
+    	String k_v = contados.entrySet().stream().map(
+    			e-> "["+e.getKey()+","+e.getValue()+"]")
+    	        .collect(Collectors.joining(" "));
+    	
+        loadPie(k_v, "Notificiaciones", false);
     }
     
     @FXML
@@ -206,15 +229,23 @@ public class Controller {
         loadDataToBar(data);
     }
     
-    private void loadPie(String dataSet, String title){
+    private void loadPie(String dataSet, String title, boolean filePath){
         invisibleAll();
         pieChart.setVisible(true);
         pieChart.setTitle(title);
-        String data = Utilities.readTxt(dataSet); //obtengo los datos del txt
+        String data;
+        data = dataSet;
+        if (filePath) data = Utilities.readTxt(dataSet); //obtengo los datos del txt
         
         loadDataToPie(data); //agrego los datos al pie con el formato específico
 
     }
+    
+    private void loadPie(String dataSet, String title){
+    	loadPie(dataSet, title, true);
+    }
+    
+    
 
     /**
      * Load the data to UI
@@ -238,6 +269,7 @@ public class Controller {
      */
     @FXML
     public void initialize() {
+        
         invisibleAll();
         loadPie("", "");
         loadLine();
@@ -246,7 +278,26 @@ public class Controller {
 
         loadPie("", "");
     }
-
+    
+    
+    
+    public ArrayList<String[]> getStats(String regex, int groups) {
+    	
+    	
+    	String syslog = Utilities.readTxt("var/log/syslog");
+    	Pattern pattern = Pattern.compile(regex);
+    	Matcher matcher = pattern.matcher(syslog);
+    	ArrayList<String[]> result = new ArrayList<>();
+    	while (matcher.find()) {
+    		String[] temp = new String[groups]; 
+    		IntStream.rangeClosed(1, groups).
+    		forEach(i->temp[i-1]=matcher.group(i));
+    		result.add(temp);
+        }
+    	
+    	return result;
+    	
+    }
     /**
      * Invisible all charts
      */
@@ -255,6 +306,7 @@ public class Controller {
         lineChart.setVisible(false);
         barChart.setVisible(false);
         bubbleChart.setVisible(false);
+        scatterChart.setVisible(false);
 
     }
 
