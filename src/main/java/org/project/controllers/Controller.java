@@ -129,7 +129,7 @@ public class Controller {
         invisibleAll();
         lineChart.setVisible(true);
         lineChart.setTitle("Languages most popular");
-        String data = Utilities.readTxt(Paths.DATA1); //obtengo los datos del txt
+        String data = Utilities.readTxt(Paths.DATA2); //obtengo los datos del txt
         loadDataToLine(data); //agrego los datos al pie con el formato específico
 
     }

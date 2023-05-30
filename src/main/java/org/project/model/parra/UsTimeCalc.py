@@ -18,6 +18,6 @@ for line in sys.stdin:
                 total_minutes = int(hours) * 60 + int(minutes)
                 users[user] = users.get(user, 0) + total_minutes
 
-with open("../../../../resources/data/userUsage.txt", "w") as file:
+with open("../../../../../resources/data/userUsage.txt", "w") as file:
     for user, minutes in users.items():
         file.write(f"[{user},{minutes}] ")
