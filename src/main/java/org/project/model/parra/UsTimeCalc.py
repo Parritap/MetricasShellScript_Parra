@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+# El siguiente script calcula el tiempo de uso de cada usuario en minutos
+# y lo guarda en un archivo de texto llamado userUsage.txt
+# El archivo de texto se encuentra en la carpeta resources/data
 import sys
 
 users = {}
