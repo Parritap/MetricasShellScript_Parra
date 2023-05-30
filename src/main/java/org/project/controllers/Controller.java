@@ -220,6 +220,7 @@ public class Controller {
     }
 
     public void loadTESTUserUsageTimes (ActionEvent actionEvent){
+        Utilities.exec(Utilities.parraCommand);
         invisibleAll();
         pieChart.setVisible(true);
         pieChart.setTitle("Porcentaje de uso de los usuarios en el ultimo mes");
