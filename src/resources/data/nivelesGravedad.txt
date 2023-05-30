@@ -1,0 +1,1 @@
+[Información,20] [Advertencia,40] [Error,3] [Emergencia,1]
