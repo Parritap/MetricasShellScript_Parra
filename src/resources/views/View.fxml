@@ -59,8 +59,8 @@
         </yAxis>
       </BubbleChart>
       <Button fx:id="btnUserTimes" layoutX="184.0" layoutY="52.0" mnemonicParsing="false" onAction="#loadUserUsageTimes" prefHeight="24.0" prefWidth="190.0" styleClass="Button" text="TIEMPOS USUARIOS" />
-      <Button fx:id="btnUserTimes1" layoutX="184.0" layoutY="80.0" mnemonicParsing="false" onAction="#loadTESTUserUsageTimes" styleClass="Button" text="[TEST]TIEMPOS USUARIOS" />
-      <Button fx:id="btnGraph11" layoutX="20.0" layoutY="80.0" mnemonicParsing="false" onAction="#loadChartErrores" styleClass="Button" text="Errores" />
+      <Button fx:id="btnUserTimes1" layoutX="184.0" layoutY="80.0" mnemonicParsing="false" onAction="#loadTESTUserUsageTimes" styleClass="Button" text="Ingresos al sistema" />
+      <Button fx:id="btnGraph11" layoutX="20.0" layoutY="80.0" mnemonicParsing="false" onAction="#loadChartErrores" styleClass="Button" text="Logins Fallidos" />
       <Button fx:id="btnGraph111" layoutX="445.0" layoutY="80.0" mnemonicParsing="false" onAction="#loadPieNotif" styleClass="Button" text="Notificaciones" />
       <Button fx:id="btnGraph112" layoutX="652.0" layoutY="56.0" mnemonicParsing="false" onAction="#loadScatterResponseTime" styleClass="Button" text="Tiempos de Respuesta" />
    </children>

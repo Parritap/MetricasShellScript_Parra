@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Controller {
 
@@ -70,6 +71,18 @@ public class Controller {
         barChart.setTitle("Languages most popular");
         String data = Utilities.readTxt(Paths.DATA1); //obtengo los datos del txt
         loadDataToBar(data); //agrego los datos al pie con el formato específico
+    }
+    
+    private void loadBar(String dataSet, String title, boolean filePath){
+        invisibleAll();
+        barChart.setVisible(true);
+        barChart.setTitle(title);
+        String data;
+        data = dataSet;
+        if (filePath) data = Utilities.readTxt(dataSet); //obtengo los datos del txt
+        
+        loadDataToBar(data); //agrego los datos al pie con el formato específico
+
     }
 
     private void loadDataToBar(String data) {
@@ -207,11 +220,14 @@ public class Controller {
     void loadPieNotif(ActionEvent event) {
     	
     	HashMap<String, Integer> contados = new HashMap<>();
-    	contados.put("INFO", 0);
-    	contados.put("WARNING", 0);
-    	getStats("(INFO|WARNING)", 1 ).stream().forEach(
+    	
+    	Stream.of("WARNING", "INFO", "ERROR", "EMERGENCY").
+    	forEach(notif-> {
+    		contados.put(notif, 0);
+    	getStats("("+notif+")", 1 ).stream().forEach(
     			e->Arrays.asList(e).stream()
     			.forEach(f->contados.compute(f, (k, v)->v+1)));
+    	});
     	
     	String k_v = contados.entrySet().stream().map(
     			e-> "["+e.getKey()+","+e.getValue()+"]")
@@ -222,15 +238,27 @@ public class Controller {
     
     @FXML
     void loadChartErrores(ActionEvent event) {
-    	invisibleAll();
-        barChart.setVisible(true);
-        barChart.setTitle("Errores en cada mes");
-        String data = Utilities.readTxt(Paths.errores);
-        loadDataToBar(data);
+    	
+    	HashMap<String, Integer> contados = new HashMap<>();
+    	
+    	Stream.of("Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    			"Jul", "Aug", "Sep", "Oct", "Nov", "Dec").
+    	forEach(month->contados.put(month, 0));
+    	getStats("(\\w{3}).* Failed (publickey|password)", 1 ).stream().forEach(
+    			e->Arrays.asList(e).stream()
+    			.forEach(f->contados.compute(f, (k, v)->v+1)));
+    	
+    	String k_v = contados.entrySet().stream().map(
+    			e-> "["+e.getKey()+","+e.getValue()+"]")
+    	        .collect(Collectors.joining(" "));
+    	
+        loadBar(k_v, "Ingresos fallidos por mes", false);
+        
     }
     
     private void loadPie(String dataSet, String title, boolean filePath){
         invisibleAll();
+        System.out.println(dataSet);
         pieChart.setVisible(true);
         pieChart.setTitle(title);
         String data;
@@ -320,10 +348,23 @@ public class Controller {
     }
 
     public void loadTESTUserUsageTimes (ActionEvent actionEvent){
-        invisibleAll();
-        pieChart.setVisible(true);
-        pieChart.setTitle("Porcentaje de uso de los usuarios en el ultimo mes");
-        String data = Utilities.readTxt(Paths.testUserTimes);
-        loadDataToPie(data); //agrego los datos al pie con el formato específico
+    	
+    	HashMap<String, Integer> contados = new HashMap<>();
+    	
+    	Stream.of("parra", "anubis", "osma", "aleandro").
+    	forEach(user-> {
+    		contados.put(user, 0);
+    	getStats("Accepted public key for ("+user+")", 1 ).stream().forEach(
+    			e->Arrays.asList(e).stream()
+    			.forEach(f->contados.compute(f, (k, v)->v+1)));
+    	});
+    	
+    	String k_v = contados.entrySet().stream().map(
+    			e-> "["+e.getKey()+","+e.getValue()+"]")
+    	        .collect(Collectors.joining(" "));
+    	
+        loadPie(k_v, "ingresos al sistema", false);
+        
+        
     }
 }

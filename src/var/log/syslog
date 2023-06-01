@@ -18,3 +18,51 @@ May 29 10:20:16 myserver cupsd[3456]: INFO: Job 12345 completed successfully.
 May 29 10:21:08 myserver postfix/anvil[5678]: INFO: Connection statistics: max connection rate 1/60s for (smtp:192.168.1.200) at May 29 10:20:45
 May 29 10:21:08 myserver postfix/anvil[5678]: INFO: Connection statistics: max connection count 1 for (smtp:192.168.1.200) at May 29 10:20:45
 May 29 10:21:08 myserver postfix/anvil[5678]: unlocked login keyring
+Jun 1 12:00:00 server sshd[1234]: Accepted public key for anubis from 192.168.0.1 port 54321 ssh2
+Jun 1 12:02:00 server bash: anubis executed 'ls -l'
+Jun 1 12:05:00 server sshd[5678]: Accepted public key for parra from 192.168.0.2 port 54321 ssh2
+Jun 1 12:07:00 server bash: parra executed 'cat /var/log/syslog'
+Jun 1 12:10:00 server sshd[9012]: Accepted public key for osma from 192.168.0.3 port 54321 ssh2
+Jun 1 12:12:00 server bash: osma executed 'df -h'
+Jun 1 12:15:00 server sshd[3456]: from 192.168.0.4 port 54321 ssh2
+Jun 1 12:17:00 server bash: alejandro executed 'grep "ERROR" /var/log/application.log'
+Jun 1 12:20:00 server sshd[7890]: Accepted public key for anubis from 192.168.0.1 port 54321 ssh2
+Jun 1 12:22:00 server bash: anubis executed 'ps aux'
+Jun 1 12:25:00 server sshd[2345]: Accepted public key for parra from 192.168.0.2 port 54321 ssh2
+Jun 1 12:27:00 server bash: parra executed 'uptime'
+Jun 1 12:30:00 server sshd[6789]: Accepted public key for osma from 192.168.0.3 port 54321 ssh2
+Jun 1 12:32:00 server bash: osma executed 'whoami'
+Jun 1 12:35:00 server sshd[1234]: Accepted public key for alejandro from 192.168.0.4 port 54321 ssh2
+Jun 1 12:37:00 server bash: alejandro executed 'ls -a'
+Jun 1 12:40:00 server sshd[5678]: Accepted public key for anubis from 192.168.0.1 port 54321 ssh2
+Jun 1 12:42:00 server bash: anubis executed 'ifconfig'
+Jun 1 12:45:00 server sshd[9012]: Accepted public key for parra from 192.168.0.2 port 54321 ssh2
+Jun 1 12:47:00 server bash: parra executed 'free -m'
+Jun 1 12:50:00 server sshd[3456]: Accepted public key for osma from 192.168.0.3 port 54321 ssh2
+Jun 1 12:52:00 server bash: osma executed 'ls -l /var/log'
+Jun 1 12:55:00 server sshd[7890]: Accepted public key for alejandro from 192.168.0.4 port 54321 ssh2
+Jun 1 12:57:00 server bash: alejandro executed 'du -sh /home'
+Jun 1 13:00:00 server sshd[2345]: Accepted public key for anubis from 192
+
+Jun 1 12:00:00 server sshd[1234]: Accepted public key for anubis from 192.168.0.1 port 54321 ssh2
+Jun 15 08:30:00 server sshd[5678]: Failed password for parra from 192.168.0.2 port 54321 ssh2
+Jul 5 17:45:00 server sshd[9012]: Failed password for osma from 192.168.0.3 port 54321 ssh2
+Jul 12 14:20:00 server sshd[3456]: Accepted public key for alejandro from 192.168.0.4 port 54321 ssh2
+Jul 18 09:10:00 server sudo: parra : TTY=pts/0 ; PWD=/home/parra ; USER=root ; COMMAND=/usr/bin/apt update
+Jul 23 16:55:00 server sshd[7890]: Failed password for invalid user anubis from 192.168.0.1 port 54321 ssh2
+Aug 2 13:25:00 server sshd[2345]: Failed publickey for parra from 192.168.0.2 port 54321 ssh2
+Aug 10 11:40:00 server mkdir: parra created directory '/home/parra/new_folder'
+Aug 17 07:15:00 server sshd[6789]: Failed password for osma from 192.168.0.3 port 54321 ssh2
+Aug 24 19:50:00 server nano: osma edited '/etc/config.conf'
+Sep 6 15:05:00 server sshd[1234]: Accepted public key for alejandro from 192.168.0.4 port 54321 ssh2
+Sep 12 12:30:00 server bash: alejandro executed '/home/alejandro/backup_script.sh'
+Sep 19 10:20:00 server sshd[5678]: Failed password for invalid user anubis from 192.168.0.1 port 54321 ssh2
+Oct 1 08:45:00 server sshd[9012]: Failed publickey for parra from 192.168.0.2 port 54321 ssh2
+Oct 9 18:55:00 server sshd[3456]: Accepted password for osma from 192.168.0.3 port 54321 ssh2
+Oct 16 14:10:00 server bash: parra executed 'uptime'
+Oct 24 09:30:00 server sshd[7890]: Failed password for invalid user anubis from 192.168.0.1 port 54321 ssh2
+Nov 6 16:40:00 server sshd[2345]: Accepted public key for parra from 192.168.0.2 port 54321 ssh2
+Nov 13 12:55:00 server bash: osma executed 'whoami'
+Nov 20 07:05:00 server sshd[6789]: Failed password for alejandro from 192.168.0.4 port 54321 ssh2
+Nov 26 17:15:00 server bash: alejandro executed 'ls -a'
+Dec 8 15:20:00 server sshd[1234]: Failed password for invalid user anubis from 192.168.0.
